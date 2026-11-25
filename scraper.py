@@ -100,7 +100,7 @@ def scan(item):
 def main():
     creds = Credentials.from_service_account_info(json.loads(os.environ["GOOGLE_CREDS"]),
             scopes=["https://www.googleapis.com/auth/spreadsheets"])
-    ws = gspread.authorize(creds).open_by_key(SHEET_ID).sheet1
+    ws = gspread.authorize(creds).open_by_key(SHEET_ID).worksheet("Feuille 1")
     deja = set(v.strip().lower() for v in ws.col_values(1))
     jour = datetime.date.today()
     random.seed(jour.toordinal())
